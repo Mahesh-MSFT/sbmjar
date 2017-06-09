@@ -1,0 +1,16 @@
+version: '3'
+services:
+
+  app:
+    image: maksh/sbmappimage:buildnumber
+    ports:
+      - "8080:8080"
+    deploy:
+      mode: global
+      # service update configuration
+      update_config:
+        parallelism: 1
+        delay: 10s
+        monitor: 10s
+        failure_action: continue
+        max_failure_ratio: 0.3
